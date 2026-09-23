@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEER ITIHAS Academy | History Learning Platform</title>
+    <!-- Google Fonts for Professional Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (Social Media, Menu) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. CSS Reset & Variables (Colors & Fonts) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #1a237e; /* Deep Blue - Trust & Professionalism */
+            --primary-light: #283593;
+            --accent-color: #ff6f00;  /* Saffron - History & Energy */
+            --text-dark: #2c3e50;
+            --text-light: #5a6a7a;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. Navbar (Sticky & Professional) --- */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* --- 3. Hero Section (First Impression) --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a237e 50%, #0d1440 100%);
+            color: var(--white);
+            padding: 6rem 5% 5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 111, 0, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 111, 0, 0.2);
+            color: #ffb74d;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 111, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #e65100;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 111, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* --- 4. Stats Section (Trust Building) --- */
+        .stats {
+            background: var(--white);
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 10;
+            margin-top: -40px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 900;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 5. Courses Section --- */
+        .courses {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: left;
+            border-bottom: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            background: rgba(255, 111, 0, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- 6. About Section (Komal Gehlot Intro) --- */
+        .about {
+            background: var(--white);
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            object-fit: cover;
+            height: 450px;
+        }
+
+        /* Decorative frame for image */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent-color);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+
+        .about-text h4 {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .about-text .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* --- 7. Footer (Professional & Detailed) --- */
+        footer {
+            background: #0d1440;
+            color: #aab4c4;
+            padding: 4rem 5% 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #aab4c4;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 111, 0, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #6b7a90;
+        }
+
+        /* --- 8. Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 4rem 5% 3rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats {
+                margin-top: 2rem;
+                padding: 2rem 5%;
+                border-radius: 0;
+            }
+
+            .about {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 3rem 5%;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">VEER <span>ITIHAS</span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">History Learning Platform</div>
+            <h1>Master History with <span>Veer Itihas Academy</span></h1>
+            <p>Your one-stop learning platform for Ancient, Medieval, and Modern Indian History. Prepare for UPSC, RPSC, REET, UGC-NET, KVS, NVS, EMRS, DSSSB, and more with conceptual clarity.</p>
+            <div class="hero-buttons">
+                <!-- Change the YouTube link here -->
+                <a href="https://www.youtube.com/@YourChannelName" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-youtube"></i> Subscribe on YouTube
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-book-open"></i> Explore Courses
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS SECTION ================= -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>500+</h3>
+            <p>Video Lectures</p>
+        </div>
+        <div class="stat-item">
+            <h3>10K+</h3>
+            <p>Students Enrolled</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Concept Clarity</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Learning Access</p>
+        </div>
+    </section>
+
+    <!-- ================= COURSES SECTION ================= -->
+    <section class="courses" id="courses">
+        <div class="section-header">
+            <h2>What We Offer</h2>
+            <p>Comprehensive History preparation based on NCERT and competitive exam patterns.</p>
+        </div>
+        <div class="grid-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                <h3>Ancient Indian History</h3>
+                <p>Detailed coverage of Indus Valley, Vedic Age, Mauryas, Guptas, and more with factual accuracy.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <h3>Medieval Indian History</h3>
+                <p>Delhi Sultanate, Mughal Empire, Marathas, and Bhakti-Sufi traditions explained in depth.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-flag"></i></div>
+                <h3>Modern Indian History</h3>
+                <p>British Rule, Freedom Struggle, and Post-Independence era tailored for UPSC and State PCS.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-book"></i></div>
+                <h3>NCERT-Based Concepts</h3>
+                <p>Strong foundation building using NCERT textbooks for absolute conceptual clarity.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-question-circle"></i></div>
+                <h3>MCQs & PYQs</h3>
+                <p>Previous Year Questions (PYQs) and practice MCQs to ace competitive examinations.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>Rajasthan History</h3>
+                <p>Special focus on Rajasthan History for RPSC, REET, and other state-level exams.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION (KOMAL GEHLOT) ================= -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <!-- Demo Image: Aap ise Komal ji ki photo se replace karein -->
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Komal Gehlot - History Educator">
+        </div>
+        <div class="about-text">
+            <h2>Komal Gehlot</h2>
+            <h4>History Educator & Founder, Veer Itihas Academy</h4>
+            <p>Hello Students! I am <span class="highlight">Komal Gehlot</span>, a passionate History Educator. My goal is to make History not just a subject, but a fascinating story that you never forget.</p>
+            <p>At <span class="highlight">Veer Itihas Academy</span>, we focus on factual accuracy and conceptual clarity. Whether you are preparing for UGC-NET, RPSC, REET, KVS, NVS, EMRS, DSSSB, or any other competitive exam, this platform is designed to give your preparation a new direction.</p>
+            <p>Join our community and let's decode History together!</p>
+            <!-- Change the YouTube link here -->
+            <a href="https://www.youtube.com/@YourChannelName" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+                <i class="fab fa-youtube"></i> Join Our Community
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="contact">
+        <div class="footer-container">
+            <!-- Column 1: Brand Info -->
+            <div class="footer-col">
+                <h3>VEER ITIHAS Academy</h3>
+                <p>Your trusted platform for comprehensive History preparation. We believe in conceptual clarity and factual accuracy for competitive exams.</p>
+                <div class="social-links">
+                    <!-- Change links here -->
+                    <a href="https://www.youtube.com/@YourChannelName" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Home</a></li>
+                    <li><a href="#courses"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Courses</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Exam Categories -->
+            <div class="footer-col">
+                <h3>Exam Categories</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> UPSC / IAS</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> RPSC / RAS</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> REET / UGC-NET</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> KVS / NVS / EMRS</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent-color);"></i> info@veeritihas.com</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-color);"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-color);"></i> Rajasthan, India</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 VEER ITIHAS Academy. All Rights Reserved. | Designed for History Learners.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 2. Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 3. Optional: Simple fade-in animation on scroll (Professional touch)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to cards and about section
+        document.querySelectorAll('.card, .about-text, .about-image').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
